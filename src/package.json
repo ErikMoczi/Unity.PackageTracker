@@ -1,0 +1,27 @@
+{
+  "name": "UnityPackageTracker",
+  "version": "0.0.1",
+  "license": "MIT",
+  "scripts": {
+    "boom": "./node_modules/ts-node/dist/bin.js index.ts"
+  },
+  "devDependencies": {
+    "@types/decompress": "^4.2.3",
+    "@types/fs-extra": "^5.0.4",
+    "@types/globby": "^8.0.0",
+    "@types/node": "^10.5.2",
+    "@types/semver": "^5.5.0",
+    "tslint": "^5.10.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "decompress": "^4.2.0",
+    "fs-extra": "^7.0.0",
+    "globby": "^8.0.1",
+    "isomorphic-git": "^0.22.3",
+    "moment": "^2.22.2",
+    "semver": "^5.5.0",
+    "ts-node": "^7.0.0",
+    "typescript": "^2.9.2"
+  }
+}
