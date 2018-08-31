@@ -13,7 +13,7 @@ export class UnityPackages {
         this.packageHistory = new PackageHistory(repositoryUrls);
     }
 
-    public run = async (packageData: OPackageData[], afterDoneCleanUp: boolean = false): Promise<void> => {
+    public run = async (packageData: OPackageData[], afterDoneCleanUp: boolean = true): Promise<void> => {
         this.initWorkspace();
         await this.processing(packageData);
         if (afterDoneCleanUp) {
