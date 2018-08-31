@@ -18,10 +18,10 @@
     "decompress": "^4.2.0",
     "fs-extra": "^7.0.0",
     "globby": "^8.0.1",
-    "isomorphic-git": "^0.22.3",
+    "isomorphic-git": "^0.35.0",
     "moment": "^2.22.2",
     "semver": "^5.5.0",
-    "ts-node": "^7.0.0",
-    "typescript": "^2.9.2"
+    "ts-node": "^7.0.1",
+    "typescript": "^3.0.3"
   }
 }
