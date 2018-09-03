@@ -1,4 +1,4 @@
-import {OPackageDist} from "./Object/OPackageDist";
+import {OPackageDist} from './Object/OPackageDist';
 
 export interface IPackageVersion {
     id(): string;

@@ -8,14 +8,16 @@ export class PackageData implements IPackageData {
     private readonly name: string;
     private readonly directory: string;
     private readonly versionFile: string;
+    private readonly readmeFile: string;
     private readonly repositoryData: IRepositoryData;
 
-    public constructor(name: string, directory?: string, historyFile?: string, repositoryData?: ORepositoryData) {
+    public constructor(name: string, directory?: string, versionFile?: string, readmeFile?: string, repositoryData?: ORepositoryData) {
         this.name = name;
         this.directory = directory ? directory : Config.Git.packageDirectory;
-        this.versionFile = historyFile ? historyFile : Config.Git.versionFile;
+        this.versionFile = versionFile ? versionFile : Config.Git.versionFile;
+        this.readmeFile = readmeFile ? readmeFile : Config.Git.readmeFile;
         this.repositoryData = repositoryData ?
-            new RepositoryData(repositoryData.branch ? repositoryData.branch : name, repositoryData.name, repositoryData.username, repositoryData.token) :
+            new RepositoryData(repositoryData.branch ? repositoryData.branch : name, repositoryData.templateBranch, repositoryData.statisticsBranch, repositoryData.url, repositoryData.gitName, repositoryData.username, repositoryData.token) :
             new RepositoryData(name)
         ;
     }
@@ -26,6 +28,10 @@ export class PackageData implements IPackageData {
 
     public VersionFile(): string {
         return this.versionFile;
+    }
+
+    public ReadmeFile(): string {
+        return this.readmeFile;
     }
 
     public Name(): string {

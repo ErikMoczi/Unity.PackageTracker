@@ -1,6 +1,9 @@
 export interface ORepositoryData {
-    name?: string
+    url?: string
+    gitName?: string
     branch?: string
+    templateBranch?: string
+    statisticsBranch?: string
     username?: string
     token?: string
 }

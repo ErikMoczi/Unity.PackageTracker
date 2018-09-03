@@ -5,4 +5,5 @@ export interface OPackageData {
     repository?: ORepositoryData
     directory?: string
     versionFile?: string
+    readmeFile?: string
 }

@@ -1,6 +1,6 @@
-import {IPackageVersion} from "../Interfaces/IPackageVersion";
-import {OPackageDist} from "../Interfaces/Object/OPackageDist";
-import {Config} from "../Config";
+import {IPackageVersion} from '../Interfaces/IPackageVersion';
+import {OPackageDist} from '../Interfaces/Object/OPackageDist';
+import {Config} from '../Config';
 import Moment = require('moment');
 
 export class PackageVersion implements IPackageVersion {
@@ -47,7 +47,7 @@ export class PackageVersion implements IPackageVersion {
     }
 
     Time(): string {
-        return "";
+        return '';
     }
 
     UnityVersion(): string | undefined {

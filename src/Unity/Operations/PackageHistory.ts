@@ -1,8 +1,8 @@
-import Axios, {AxiosResponse} from "axios";
-import {OUnityPackageVersion} from "../Interfaces/Object/OUnityPackageVersion";
-import {OUnityPackageInfo} from "../Interfaces/Object/OUnityPackageInfo";
-import {PackageVersion} from "../Data/PackageVersion";
-import {IPackageVersion} from "../Interfaces/IPackageVersion";
+import Axios, {AxiosResponse} from 'axios';
+import {OUnityPackageVersion} from '../Interfaces/Object/OUnityPackageVersion';
+import {OUnityPackageInfo} from '../Interfaces/Object/OUnityPackageInfo';
+import {PackageVersion} from '../Data/PackageVersion';
+import {IPackageVersion} from '../Interfaces/IPackageVersion';
 import Semver = require('semver');
 
 export class PackageHistory {
@@ -17,10 +17,10 @@ export class PackageHistory {
 
         try {
             const packageResponses: AxiosResponse<OUnityPackageInfo>[] = await this.getRepositoryResponses(packageName);
-            packageVersions = this.getUniquePackageVersion(packageResponses);
+            packageVersions = this.getUniquePackageVersion(packageName, packageResponses);
         }
         catch (e) {
-            console.log(`Problem with getting ${packageName} package versions - ${e.message}`);
+            throw new Error(`Problem with getting ${packageName} package versions - ${e.message}`);
         }
 
         this.orderVersions(packageVersions);
@@ -36,11 +36,15 @@ export class PackageHistory {
         );
     };
 
-    private getUniquePackageVersion = (packageResponses: AxiosResponse<OUnityPackageInfo>[]): IPackageVersion[] => {
+    private getUniquePackageVersion = (packageName: string, packageResponses: AxiosResponse<OUnityPackageInfo>[]): IPackageVersion[] => {
         const packageVersions: IPackageVersion[] = [];
         for (const packageResponse of packageResponses) {
-            const unityPackageInfo: OUnityPackageInfo = packageResponse.data;
+            if (packageResponse.data.toString().indexOf('error') !== -1) {
+                console.info(`Missing response data from package ${packageName} - ${packageResponse.data}`);
+                continue;
+            }
 
+            const unityPackageInfo: OUnityPackageInfo = packageResponse.data;
             for (const version of Object.keys(unityPackageInfo.versions)) {
                 const unityPackageVersion: OUnityPackageVersion = unityPackageInfo.versions[version];
                 if (packageVersions.every(value => value.Version() !== version)) {

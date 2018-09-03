@@ -1,10 +1,10 @@
 import * as Fs from 'fs';
 import * as Fse from 'fs-extra';
 import {Config} from './Config';
-import {OPackageData} from "./Interfaces/Object/OPackageData";
-import {GitOperations} from "./Operations/GitOperations";
-import {PackageHistory} from "./Operations/PackageHistory";
-import {IPackageVersion} from "./Interfaces/IPackageVersion";
+import {OPackageData} from './Interfaces/Object/OPackageData';
+import {PackageHistory} from './Operations/PackageHistory';
+import {IPackageVersion} from './Interfaces/IPackageVersion';
+import {RepositoryOperations} from './Operations/RepositoryOperations';
 
 export class UnityPackages {
     private readonly packageHistory: PackageHistory;
@@ -24,8 +24,8 @@ export class UnityPackages {
     private processing = async (packageData: OPackageData[]): Promise<void> => {
         for (const item of packageData) {
             const packageVersions: IPackageVersion[] = await this.packageHistory.getPackageVersions(item.name);
-            const gitOperations: GitOperations = new GitOperations(item);
-            await gitOperations.proceed(packageVersions);
+            const repositoryOperations: RepositoryOperations = new RepositoryOperations(item);
+            await repositoryOperations.proceed(packageVersions);
         }
     };
 

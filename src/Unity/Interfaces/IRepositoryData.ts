@@ -1,7 +1,13 @@
 export interface IRepositoryData {
-    Name(): string
+    Url(): string
+
+    GitName(): string
 
     Branch(): string
+
+    TemplateBranch(): string
+
+    StatisticsBranch(): string
 
     Username(): string
 

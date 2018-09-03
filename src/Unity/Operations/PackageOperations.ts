@@ -48,7 +48,7 @@ export class PackageOperations {
                 Fse.removeSync(singleDirectory);
             }
             catch (e) {
-                console.log(`Problem with refactoring package ${packageDirectory} - ${e.message}`);
+                throw new Error(`Problem with refactoring package ${packageDirectory} - ${e.message}`);
             }
         }
     }

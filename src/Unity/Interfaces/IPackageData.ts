@@ -7,5 +7,7 @@ export interface IPackageData {
 
     VersionFile(): string
 
+    ReadmeFile(): string
+
     RepositoryData(): IRepositoryData
 }
