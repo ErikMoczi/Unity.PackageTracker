@@ -28,9 +28,20 @@ export class PackageHistory {
         return packageVersions;
     };
 
-    private getRepositoryResponses = (packageName: string): Promise<AxiosResponse<OUnityPackageInfo>[]> => {
-        return Axios.all(
-            this.repositoryUrls.map(
+    private getRepositoryResponses = async (packageName: string): Promise<AxiosResponse<OUnityPackageInfo>[]> => {
+        const repositoryUrls: string[] = [];
+        for (const value of this.repositoryUrls) {
+            try {
+                await Axios.get(value + '/' + packageName);
+                repositoryUrls.push(value);
+            }
+            catch (e) {
+                console.info(`Missing server ${value} response from package ${packageName} --- ${e}`)
+            }
+        }
+
+        return await Axios.all(
+            repositoryUrls.map(
                 value => Axios.get<OUnityPackageInfo>(value + '/' + packageName)
             )
         );
