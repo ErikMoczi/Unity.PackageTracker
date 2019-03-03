@@ -6,7 +6,6 @@ export namespace Config {
         private static readonly stagingUrl: string = 'staging-';
         private static readonly protocol: string = 'https://';
         private static readonly download: string = 'download.';
-        private static readonly npmJson: string = '/.npm/all.json';
 
         public static currentPackages = (): string => UnityRepository.protocol + UnityRepository.baseUrl;
         public static stagingPackages = (): string => UnityRepository.protocol + UnityRepository.stagingUrl + UnityRepository.baseUrl;
@@ -15,7 +14,7 @@ export namespace Config {
             UnityRepository.stagingPackages()
         ];
 
-        public static currentPackageInfo = (): string => UnityRepository.protocol + UnityRepository.download + UnityRepository.baseUrl + UnityRepository.npmJson;
+        public static currentPackageInfo = (): string => UnityRepository.protocol + UnityRepository.download + UnityRepository.baseUrl;
     }
 
     export abstract class TempWorkspace {

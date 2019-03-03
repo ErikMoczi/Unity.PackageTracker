@@ -9,24 +9,25 @@ const exceptPackages: string[] = [
     'com.unity.package-manager'
 ];
 const searchPackages: Promise<OPackageData[]> = new AllUnityPackages().GetData(exceptPackages);
-searchPackages.then(value => {
+searchPackages.then(async (value) => {
     const unityPackages: UnityPackages = new UnityPackages();
     /*
         sometimes problems with package isomorphic-git, need to split data
      */
-    unityPackages.run(Utils.Base.arrayRange(value, 0, 0.2));
-    // unityPackages.run(Utils.Base.arrayRange(value, 0.2, 0.4));
-    // unityPackages.run(Utils.Base.arrayRange(value, 0.4, 0.6));
-    // unityPackages.run(Utils.Base.arrayRange(value, 0.6, 0.8));
-    // unityPackages.run(Utils.Base.arrayRange(value, 0.8, 1));
+    await unityPackages.run(Utils.Base.arrayRange(value, 0, 0.2));
+    await unityPackages.run(Utils.Base.arrayRange(value, 0.2, 0.4));
+    await unityPackages.run(Utils.Base.arrayRange(value, 0.4, 0.6));
+    await unityPackages.run(Utils.Base.arrayRange(value, 0.6, 0.8));
+    await unityPackages.run(Utils.Base.arrayRange(value, 0.8, 1));
 });
 
 // const searchPackages: Array<OPackageData> = [
+//     {name: 'com.unity.test-framework'},
 //     {name: 'com.unity.test-framework.performance'},
 //     {name: 'com.unity.burst'},
 //     {name: 'com.unity.collections'},
 //     {name: 'com.unity.entities'},
-//     {name: 'com.unity.incrementalcompiler'},
+//     {name: 'com.unity.rendering.hybrid'},
 //     {name: 'com.unity.jobs'},
 //     {name: 'com.unity.mathematics'},
 //     {name: 'com.unity.properties'},

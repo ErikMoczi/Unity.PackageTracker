@@ -6,6 +6,7 @@
     "boom": "./node_modules/ts-node/dist/bin.js index.ts"
   },
   "devDependencies": {
+    "@types/cheerio": "^0.22.10",
     "@types/decompress": "^4.2.3",
     "@types/fs-extra": "^5.0.4",
     "@types/globby": "^8.0.0",
@@ -15,6 +16,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
     "decompress": "^4.2.0",
     "fs-extra": "^7.0.0",
     "globby": "^8.0.1",
